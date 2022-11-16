@@ -3,6 +3,7 @@
 $rota = $_SERVER['REQUEST_URI'];
 
 require_once ('../src/controller/alunoController.php');
+require_once ('../src/connection/connection.php');
 
 $paginas = [
     '/' => 'Inicio',
