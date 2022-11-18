@@ -23,10 +23,18 @@
                 <td>{$linha['cidade']}</td>
                 <td>
                     <a href='/editar?id={$id}' class='btn btn-outline-warning'>Editar</a>
-                    <a href='/excluir?id={$id}' class='btn btn-outline-danger'>Excluir</a>
+                    <a href='#' onclick='confirmar({$id})' class='btn btn-outline-danger'>Excluir</a>
                 </td>
             </tr>";
         }
     ?>
     </tbody>
 </table>
+
+<script>
+    function confirmar(id) {
+        if (true === confirm('Tem certeza?')) {
+            location.href = '/excluir?id='+id;
+        }
+    }
+</script>
