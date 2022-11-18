@@ -2,18 +2,10 @@
 
 declare(strict_types=1);
 
-function novoAluno(): void {
-    if (false === empty($_POST)) {
-        $nome = $_POST['nome'];
-        $matricula = $_POST['matricula'];
-        $cidade = $_POST['cidade'];
-
-        $sql = 'INSERT INTO tb_alunos (nome, matricula, cidade) VALUES (?,?,?)';
-        $query = abriConection()->prepare($sql);
-        $query->execute([$nome, $matricula, $cidade]);
-
-        header('location: /listar');
-    }
+function novoAluno(string $nome, string $cidade, string $matricula): void {
+    $sql = 'INSERT INTO tb_alunos (nome, matricula, cidade) VALUES (?,?,?)';
+    $query = abriConection()->prepare($sql);
+    $query->execute([$nome, $matricula, $cidade]);
 }
 
 function buscarAlunos(): iterable {
