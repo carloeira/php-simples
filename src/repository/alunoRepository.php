@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-function novoAluno(string $nome, string $cidade, string $matricula): void {
+function novoAluno(string $nome, string $matricula, string $cidade): void {
     $sql = 'INSERT INTO tb_alunos (nome, matricula, cidade) VALUES (?,?,?)';
     $query = abriConection()->prepare($sql);
     $query->execute([$nome, $matricula, $cidade]);
@@ -25,16 +25,9 @@ function excluirAluno(string $id): void {
     abriConection()->query($sql);
 }
 
-function atualizarAluno(): void {
-    if (false === empty($_POST)) {
-        $id = $_POST['id'];
-        $nome = $_POST['nome'];
-        $matricula = $_POST['matricula'];
-        $cidade = $_POST['cidade'];
-
-        $sql = 'UPDATE tb_alunos SET nome=?, matricula=?, cidade=? WHERE id=?';
-        $query = abriConection()->prepare($sql);
-        $query->execute([$nome, $matricula, $cidade, $id]);
-        header('location: /listar');
-    }
+function atualizarAluno($nome, $matricula, $cidade, $id): void {
+    $sql = 'UPDATE tb_alunos SET nome=?, matricula=?, cidade=? WHERE id=?';
+    $query = abriConection()->prepare($sql);
+    $query->execute([$nome, $matricula, $cidade, $id]);
+    
 }

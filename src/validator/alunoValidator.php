@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-function validateForm(string $nome, string $cidade, string $matricula): bool {
+function validateForm(string $nome, string $matricula, string $cidade): bool {
     if (strlen($nome) < 3) {
         $mensagem = 'Nome inválido';
         include '../src/views/components/erro.phtml';
@@ -17,4 +17,4 @@ function validateForm(string $nome, string $cidade, string $matricula): bool {
         return false;
     }
     return true;
-} 
+}
